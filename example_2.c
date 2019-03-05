@@ -1,24 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void capitalize(char* s) {
-    s[0] = toupper(s[0]);
-}
+#define SIZE 5
 
 int main(void) {
-    char str[255];
-    int i = 0;
-    str[0] = 'a';
-    str[1] = ' ';
-    str[2] = 'c';
-    str[3] = 'a';
-    str[4] = 't';
-    str[5] = '\0'; // Sometimes can be important. Esp. in networking!
-    /*
-     * '' usually contains character, while
-     * "" contains string
-     */
-    printf("Before-> %s\n", str);
-    capitalize(str);
-    printf("Before-> %s\n", str);
+    int a = 10;
+    int* x = (int*)malloc(SIZE * sizeof(int));
+    int* y = (int*)malloc(SIZE * sizeof(int));
+    int i;
+    for (i = 0; i < SIZE; ++i) {
+        x[i] = i;
+        y[i] = i;
+    }
+    for (i = 0; i < SIZE; ++i) {
+        printf("X %d: %d\n", i, *(x + i));
+    }
+    printf("=== DELIM ===\n");
+    for (i = 0; i < SIZE; ++i) {
+        printf("Y %d: %d\n", i, *(y + i));
+    }
+    free(x);
+    printf("=== AFTER FREE ===\n");
+    for (i = 0; i < SIZE; ++i) {
+        y[i] += x[i];
+    }
+    for (i = 0; i < SIZE; ++i) {
+        printf("Y %d: %d\n", i, *(x + i));
+    }
+    
     return 0;
 }

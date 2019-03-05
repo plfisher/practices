@@ -1,19 +1,24 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 5
 
 int main(void) {
-    char* a = "abc";
+    int a = 10;
+    int* x = (int*)malloc(SIZE * sizeof(int));
     int i;
-    printf("-> %s\n", a);
-    for (i = 0; i < 3; ++i) {
-        printf("%c ", a[i]);
+    for (i = 0; i < SIZE; ++i) {
+        x[i] = i;
     }
-    printf("\n");
-    
-    a[1] = 'x';
-    for (i = 0; i < 3; ++i) {
-        printf("%c ", a[i]);
+    for (i = 0; i < SIZE; ++i) {
+        printf("X %d: %d\n", i, *(x + i));
     }
-    printf("\n");
+    printf("Address of x: %p\n", x);
+    free(x);
+    //int *y = (int*)malloc(SIZE * sizeof(int));
+    //printf("Address of y: %p\n", y);
+    // Here comes second free()! BAD!
+    free(x);
     
     return 0;
 }
