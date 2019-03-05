@@ -1,20 +1,17 @@
 #include <stdio.h>
 
 int main(void) {
-    int x = 10;
-    int y = 20;
-    int* addr_of_x = &x;
-    int* addr_of_y = &y;
-    printf("Value of X->\t%d\n", x);
-    printf("Value of Y->\t%d\n", y);
-    /* 
-     * Be aware of pointers. They point
-     * to the memory location so you change value in
-     * that memory cell!
-     */
-    addr_of_y = addr_of_x;
-    *addr_of_y = 15;
-    printf("Value of X->\t%d\n", x);
-    printf("Value of Y->\t%d\n", y);
-    return 0;
+char *msg = "Hello there";
+char *nums = "1 3 5 7 9";
+char s[10], t[10];
+int a, b, c, n;
+
+n = sscanf(msg, "%s %s", s, t);
+n = printf("%10s %-10s", t, s);
+n = sscanf(nums, "%d %d %d", &a, &b, &c);
+
+printf("%d flower%s\n", n, n > 1 ? "s" : " ");
+printf("a = %d, answer = %d\n", a, b+c);
+
+return 0;
 }

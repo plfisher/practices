@@ -1,16 +1,24 @@
 #include <stdio.h>
-#include <stdint.h> // This one needed for int32_t and int64_t
+
+void capitalize(char* s) {
+    s[0] = toupper(s[0]);
+}
 
 int main(void) {
-    printf("Let's print type sizes.\n");
-    printf("char->\t\t%lu\n", sizeof(char));
-    printf("int->\t\t%lu\n", sizeof(int));
-    printf("float->\t\t%lu\n", sizeof(float));
-    printf("double->\t%lu\n", sizeof(double));
-    printf("int32->\t\t%lu\n", sizeof(int32_t));
-    printf("int64->\t\t%lu\n", sizeof(int64_t));
-    printf("char*->\t\t%lu\n", sizeof(char*));
-    printf("int*->\t\t%lu\n", sizeof(int*));
-    printf("void*->\t\t%lu\n", sizeof(void*));
+    char str[255];
+    int i = 0;
+    str[0] = 'a';
+    str[1] = ' ';
+    str[2] = 'c';
+    str[3] = 'a';
+    str[4] = 't';
+    str[5] = '\0'; // Sometimes can be important. Esp. in networking!
+    /*
+     * '' usually contains character, while
+     * "" contains string
+     */
+    printf("Before-> %s\n", str);
+    capitalize(str);
+    printf("Before-> %s\n", str);
     return 0;
 }

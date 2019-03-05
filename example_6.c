@@ -1,37 +1,24 @@
 #include <stdio.h>
 
-/*
- * Created a local copy
- */
-void swap_wrong(int x, int y) {
-    int temp = x;
-    x = y;
-    y = temp;
-}
+struct {
+    char x;
+    int y;
+    char z;
+} s1;
 
-/*
- * Manipulating values at
- * particular addresses
- */
-void swap_correct(int* x, int* y) {
-    int temp = *x;
-    *x = *y;
-    *y = temp;
-}
+struct {
+    char x;
+    char z;
+    int y;
+} s2;
 
 int main(void) {
-    int x = 10;
-    int y = 20;
-    printf("=== Initial ===\n");
-    printf("Value of X->\t%d\n", x);
-    printf("Value of Y->\t%d\n", y);
-    swap_wrong(x, y);
-    printf("=== Wrong swap ===\n");
-    printf("Value of X->\t%d\n", x);
-    printf("Value of Y->\t%d\n", y);
-    swap_correct(&x, &y);
-    printf("=== Correct swap ===\n");
-    printf("Value of X->\t%d\n", x);
-    printf("Value of Y->\t%d\n", y);
+    printf("=== Reminder ===\n");
+    printf("Size of int-> %lu\n", sizeof(int));
+    printf("Size of char-> %lu\n", sizeof(char));
+    printf("=== Reminder ===\n");
+    printf("Size of s1-> %lu\n", sizeof(s1));
+    printf("Size of s2-> %lu\n", sizeof(s2));
+
     return 0;
 }

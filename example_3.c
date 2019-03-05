@@ -1,16 +1,19 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(void) {
-    int x = 10;
-    int* addr_of_x = &x;
-    /*
-     * There is another way how to declare pointers
-     * and they are equal, it is mostly a matter
-     * of taste/code style:
-     * int *addr_of_x;
-     */
-    printf("Value of X->\t%d\n", x);
-    (*addr_of_x) = 12;
-    printf("Value of X->\t%d\n", x);
+    char line[100];
+    char *family, *given, *gap;
+    printf("Enter your name: "); 
+    fgets(line, 100, stdin);
+    given = line;
+    for (gap = line; *gap; gap++)
+        if (isspace(*gap)) break;
+
+    *gap = '\0';
+    family = gap + 1;
+    printf("GName FName: %s %s", given, family);
+    printf("Your name: %s, %s\n", family, given);
     return 0;
 }
+
